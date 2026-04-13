@@ -1,322 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>V-Safe World — Coming Soon</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
+  --green:#1f7a4d;
+  --green-light:#eaf7f0;
+  --green-soft:#cfe9da;
+  --text:#173826;
+  --muted:#6b8d7b;
   --white:#ffffff;
-  --g1:#edf7f1;
-  --g2:#c8e8d4;
-  --g3:#6dbe90;
-  --g4:#38905c;
-  --g5:#1c5235;
-  --text:#1a2e22;
-  --soft:#567a65;
-  --muted:#96b5a2;
-  --line:#ddeee4;
+  --line:#d8e9df;
 }
 
-html,body{height:100%}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
-  min-height:100vh;
-  background:var(--white);
+  font-family:'Inter',sans-serif;
+  background:#ffffff;
   color:var(--text);
-  font-family:'Outfit',sans-serif;
-  font-weight:300;
+  min-height:100vh;
   display:flex;
-  flex-direction:column;
-  overflow-x:hidden;
-}
-
-.blush{
-  position:fixed;
-  top:0;left:0;right:0;
-  height:55vh;
-  background:radial-gradient(ellipse 110% 70% at 50% -10%, #edf7f1 0%, transparent 72%);
-  pointer-events:none;
-}
-
-.gridlines{
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(180,220,195,.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180,220,195,.28) 1px, transparent 1px);
-  background-size:68px 68px;
-  pointer-events:none;
-}
-
-header{
-  position:relative;
-  z-index:10;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1.2rem 3rem;
-  border-bottom:1px solid var(--line);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-}
-
-.logo-name{
-  font-weight:500;
-  font-size:.85rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--g5);
-}
-
-.header-pill{
-  font-size:.66rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--muted);
-  padding:.28rem .75rem;
-  border:1px solid var(--line);
-  border-radius:99px;
-  background:var(--g1);
-}
-
-main{
-  position:relative;
-  z-index:10;
-  flex:1;
-  display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:4rem 1.5rem;
-  text-align:center;
+  padding:24px;
 }
 
-.heading{
-  margin-bottom:1.4rem;
+.container{
+  width:100%;
+  max-width:900px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  box-shadow:0 20px 60px rgba(31,122,77,0.08);
 }
 
-.h-pre{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-size:1.1rem;
+.left{
+  background:linear-gradient(135deg,var(--green) 0%, #145a37 100%);
+  color:white;
+  padding:60px 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+  width:fit-content;
+}
+
+h1{
+  font-size:48px;
+  line-height:1.05;
+  margin-bottom:18px;
+  font-weight:600;
+}
+
+p{
+  font-size:16px;
+  line-height:1.7;
+  opacity:.92;
+}
+
+.right{
+  padding:60px 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:var(--green-light);
+}
+
+.launch-label{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
   color:var(--muted);
-  display:block;
-}
-
-.h-main{
-  font-family:'Playfair Display',serif;
-  font-size:4.5rem;
-  color:var(--g5);
-  line-height:.95;
-}
-
-.h-main i{
-  color:var(--g4);
-  font-style:italic;
-}
-
-.tagline{
-  font-size:1rem;
-  color:var(--soft);
-  line-height:1.8;
-  margin-bottom:2rem;
+  margin-bottom:20px;
 }
 
 .countdown{
-  display:flex;
-  gap:1rem;
-  margin-top:2rem;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-bottom:28px;
 }
 
-.c-unit{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.box{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
 }
 
-.c-card{
-  width:90px;
-  height:90px;
-  background:var(--g1);
-  border:1px solid var(--g2);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.num{
+  font-size:32px;
+  font-weight:600;
+  color:var(--green);
+  margin-bottom:6px;
 }
 
-.c-num{
-  font-family:'Playfair Display',serif;
-  font-size:2.2rem;
-  color:var(--g5);
-}
-
-.c-lbl{
-  margin-top:.5rem;
-  font-size:.65rem;
-  letter-spacing:.15em;
+.lbl{
+  font-size:12px;
   text-transform:uppercase;
+  letter-spacing:.12em;
   color:var(--muted);
 }
 
-.prog-wrap{
-  margin-top:2.5rem;
-  width:320px;
+.progress-wrap{
+  margin-top:10px;
 }
 
-.prog-meta{
+.progress-meta{
   display:flex;
   justify-content:space-between;
-  font-size:.7rem;
+  font-size:13px;
   color:var(--muted);
-  margin-bottom:.4rem;
+  margin-bottom:10px;
 }
 
-.prog-track{
-  height:4px;
-  background:var(--g1);
-  border-radius:99px;
+.progress{
+  height:8px;
+  background:#dceee3;
+  border-radius:999px;
   overflow:hidden;
 }
 
-.prog-fill{
-  height:100%;
+.progress-fill{
   width:0%;
-  background:linear-gradient(90deg,var(--g3),var(--g4));
-  transition:width 1s ease;
+  height:100%;
+  background:var(--green);
+  border-radius:999px;
+  transition:width .8s ease;
 }
 
-footer{
-  text-align:center;
-  padding:1.4rem;
-  border-top:1px solid var(--line);
-  font-size:.75rem;
+.footer{
+  margin-top:28px;
+  font-size:13px;
   color:var(--muted);
+}
+
+.footer a{
+  color:var(--green);
+  text-decoration:none;
+  font-weight:500;
+}
+
+@media(max-width:768px){
+  .container{
+    grid-template-columns:1fr;
+  }
+
+  .left,.right{
+    padding:36px 24px;
+  }
+
+  h1{
+    font-size:36px;
+  }
 }
 </style>
 </head>
 <body>
 
-<div class="blush"></div>
-<div class="gridlines"></div>
+<div class="container">
 
-<header>
-  <div class="logo">
-    <span class="logo-name">V-Safe World</span>
-  </div>
-  <span class="header-pill">Safety & Training</span>
-</header>
-
-<main>
-
-  <div class="heading">
-    <span class="h-pre">Introducing</span>
-    <span class="h-main">V-Safe <i>World</i></span>
+  <div class="left">
+    <span class="badge">Launching Soon</span>
+    <h1>V-Safe World</h1>
+    <p>
+      Building a safer tomorrow — one workplace at a time.
+      Safety Training, Risk Management, Compliance & Emergency Response.
+    </p>
   </div>
 
-  <p class="tagline">
-    Building a safer tomorrow —<br>one workplace at a time.
-  </p>
+  <div class="right">
+    <div class="launch-label">Launching 25 April 2026</div>
 
-  <p style="margin-bottom:1rem;color:#96b5a2;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;">
-    Launching 25 April 2026
-  </p>
+    <div class="countdown">
+      <div class="box">
+        <div class="num" id="days">00</div>
+        <div class="lbl">Days</div>
+      </div>
+      <div class="box">
+        <div class="num" id="hours">00</div>
+        <div class="lbl">Hours</div>
+      </div>
+      <div class="box">
+        <div class="num" id="mins">00</div>
+        <div class="lbl">Minutes</div>
+      </div>
+      <div class="box">
+        <div class="num" id="secs">00</div>
+        <div class="lbl">Seconds</div>
+      </div>
+    </div>
 
-  <div class="countdown">
-    <div class="c-unit">
-      <div class="c-card"><span class="c-num" id="cd-d">00</span></div>
-      <span class="c-lbl">Days</span>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span>Launch Progress</span>
+        <span id="percent">0%</span>
+      </div>
+      <div class="progress">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
     </div>
-    <div class="c-unit">
-      <div class="c-card"><span class="c-num" id="cd-h">00</span></div>
-      <span class="c-lbl">Hours</span>
-    </div>
-    <div class="c-unit">
-      <div class="c-card"><span class="c-num" id="cd-m">00</span></div>
-      <span class="c-lbl">Minutes</span>
-    </div>
-    <div class="c-unit">
-      <div class="c-card"><span class="c-num" id="cd-s">00</span></div>
-      <span class="c-lbl">Seconds</span>
-    </div>
-  </div>
 
-  <div class="prog-wrap">
-    <div class="prog-meta">
-      <span>Launch Progress</span>
-      <span id="pct">0%</span>
-    </div>
-    <div class="prog-track">
-      <div class="prog-fill" id="prog"></div>
+    <div class="footer">
+      Crafted by <a href="https://sahyadricode.online" target="_blank">Sahyadri Code Works</a>
     </div>
   </div>
 
-</main>
-
-<footer>
-  Crafted by <a href="https://sahyadricode.online" target="_blank" style="color:#38905c;">Sahyadri Code Works</a>
-</footer>
+</div>
 
 <script>
-(function () {
-  const LAUNCH = new Date('2026-04-25T00:00:00');
-  const START = new Date();
+const launchDate = new Date("2026-04-25T00:00:00").getTime();
+const startDate = new Date().getTime();
 
-  const dEl = document.getElementById('cd-d');
-  const hEl = document.getElementById('cd-h');
-  const mEl = document.getElementById('cd-m');
-  const sEl = document.getElementById('cd-s');
-  const progEl = document.getElementById('prog');
-  const pctEl = document.getElementById('pct');
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = launchDate - now;
 
-  function pad(n) {
-    return n.toString().padStart(2, '0');
+  if (diff <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("mins").textContent = "00";
+    document.getElementById("secs").textContent = "00";
+    document.getElementById("progressFill").style.width = "100%";
+    document.getElementById("percent").textContent = "100%";
+    return;
   }
 
-  function tick() {
-    const now = new Date();
-    const diff = LAUNCH - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
 
-    if (diff <= 0) {
-      dEl.textContent = "00";
-      hEl.textContent = "00";
-      mEl.textContent = "00";
-      sEl.textContent = "00";
-      progEl.style.width = "100%";
-      pctEl.textContent = "100%";
-      return;
-    }
+  document.getElementById("days").textContent = String(days).padStart(2, "0");
+  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("mins").textContent = String(mins).padStart(2, "0");
+  document.getElementById("secs").textContent = String(secs).padStart(2, "0");
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
+  const progress = Math.min(100, ((now - startDate) / (launchDate - startDate)) * 100);
+  document.getElementById("progressFill").style.width = progress + "%";
+  document.getElementById("percent").textContent = Math.floor(progress) + "%";
+}
 
-    dEl.textContent = pad(days);
-    hEl.textContent = pad(hours);
-    mEl.textContent = pad(mins);
-    sEl.textContent = pad(secs);
-
-    const total = LAUNCH - START;
-    const gone = now - START;
-    const progress = Math.min(100, Math.max(0, (gone / total) * 100));
-
-    progEl.style.width = progress.toFixed(2) + "%";
-    pctEl.textContent = progress.toFixed(0) + "%";
-  }
-
-  tick();
-  setInterval(tick, 1000);
-})();
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 </body>
